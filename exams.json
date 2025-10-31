@@ -1,0 +1,52 @@
+{
+    "DBMS": {
+        "date": "November 15, 2025",
+        "time": "10:00 AM",
+        "duration": "3 hours",
+        "venue": "Room 101",
+        "topics": ["SQL", "Normalization", "Transactions", "ACID Properties"],
+        "instructions": ["Bring student ID", "No electronic devices allowed"],
+        "professor": "Dr. Smith",
+        "max_marks": 100
+    },
+    "OS": {
+        "date": "November 18, 2025",
+        "time": "2:00 PM",
+        "duration": "3 hours",
+        "venue": "Lab 201",
+        "topics": ["Process Management", "Memory Management", "File Systems", "Deadlocks"],
+        "instructions": ["Bring student ID", "Scientific calculator allowed"],
+        "professor": "Dr. Johnson",
+        "max_marks": 100
+    },
+    "DSA": {
+        "date": "November 20, 2025",
+        "time": "9:00 AM",
+        "duration": "3 hours",
+        "venue": "Room 303",
+        "topics": ["Arrays", "Linked Lists", "Trees", "Graphs", "Sorting Algorithms"],
+        "instructions": ["Bring student ID", "No electronic devices allowed"],
+        "professor": "Dr. Williams",
+        "max_marks": 100
+    },
+    "PYTHON": {
+        "date": "November 22, 2025",
+        "time": "11:00 AM",
+        "duration": "2 hours",
+        "venue": "Computer Lab 102",
+        "topics": ["Functions", "OOP", "File Handling", "Exception Handling"],
+        "instructions": ["Bring student ID", "Lab computers will be provided"],
+        "professor": "Prof. Davis",
+        "max_marks": 75
+    },
+    "JAVA": {
+        "date": "November 25, 2025",
+        "time": "3:00 PM",
+        "duration": "3 hours",
+        "venue": "Computer Lab 103",
+        "topics": ["Classes", "Inheritance", "Interfaces", "Collections"],
+        "instructions": ["Bring student ID", "Lab computers will be provided"],
+        "professor": "Dr. Brown",
+        "max_marks": 100
+    }
+}

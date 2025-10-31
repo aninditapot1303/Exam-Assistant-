@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script>
+        function clearChat() {
+            if (confirm('Are you sure you want to clear the chat history?')) {
+                fetch('/clear_chat', {
+                    method: 'POST',
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        // Force a fresh page load without cache
+                        window.location.href = window.location.href.split('#')[0];
+                    }
+                });
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Exam Assistant</h1>
+        <div class="header-actions">
+            <button onclick="clearChat()" class="clear-button">Clear Chat History</button>
+        </div>
+        <div class="chat-container">
+            {% if chat_history %}
+            <div id="chat-history" class="chat-history">
+                {% for chat in chat_history %}
+                    {% if chat.user_message %}
+                    <div class="chat-message user-message">
+                        <div class="message-content">
+                            <p>{{ chat.user_message }}</p>
+                            <span class="timestamp">{{ chat.timestamp }}</span>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% if chat.bot_message %}
+                    <div class="chat-message bot-message">
+                        <div class="message-content">
+                            <p>{{ chat.bot_message }}</p>
+                            <span class="timestamp">{{ chat.timestamp }}</span>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            {% endif %}
+            
+            <form method="POST" class="query-form">
+                <input type="text" 
+                       name="query" 
+                       placeholder="Ask about your exam schedule (e.g., When is my DBMS exam?)"
+                       required>
+                <button type="submit">Ask</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        // Scroll chat history to the newest message on page load
+        function scrollChatToBottom() {
+            const chat = document.getElementById('chat-history');
+            if (chat) {
+                // Move to the bottom of the container
+                chat.scrollTop = chat.scrollHeight;
+            }
+            // Focus the input so the user can type immediately
+            const input = document.querySelector('.query-form input[name="query"]');
+            if (input) input.focus();
+        }
+
+        // Run after DOM content is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            scrollChatToBottom();
+        });
+    </script>
+</body>
+</html>
